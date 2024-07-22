@@ -16,6 +16,9 @@ func indexHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+    for _, e := range os.Environ() {
+        fmt.Println(e)
+    }
     http.HandleFunc("/", indexHandler)
     log.Printf("Starting HTTP server at port: %d\n", port)
     log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", port), nil))
